@@ -1,0 +1,11 @@
+fileVersion: 1
+id: "643"
+mappingDefinitions:
+  SRC:
+    database: PRANJAL
+    schema: PRANJAL_DEV
+  TARGET:
+    database: PRANJAL
+    schema: TARGET_DB
+name: Deployment
+type: Environment
