@@ -6,6 +6,6 @@ mappingDefinitions:
     schema: PRANJAL_DEV
   TARGET:
     database: PRANJAL
-    schema: TARGET_DB
+    schema: PRANJAL_TEST
 name: Deployment
 type: Environment
