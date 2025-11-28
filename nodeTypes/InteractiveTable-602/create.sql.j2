@@ -416,72 +416,28 @@ does not permit copying or modification for any other purpose.
 
             #Materialization type change from interactive table to transient interactive table
 
-            {%if (currentState.node.name != desiredState.node.name) or (desiredState.node.location.name !=  currentState.node.location.name) or nsVariables.storageLocationTest == false%}
-                {# Create Static Interactive Table #}
-                {% if  desiredState.config.autoRefresh == false %} 
-                    {{ stage('Create '+ '{{ desiredState.node.materializationType }}', true, "sql", "create") }}
-                    CREATE OR REPLACE {{ keyword }} INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }}
-                        {{ nsVariables.finalClusterKey }} 
-                        {{ interactiveTableComment }}
-                    (
-                        {% for col in desiredState.columns %}
-                            "{{ col.name }}"{{ col.dataType }}
-                            {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
-                            {%- if not loop.last -%}, {% endif %}
-                        {% endfor %}
-                    )
-                    AS
-                    {% for source in desiredState.sources %}
-                        SELECT {% if desiredState.config.selectDistinct %} DISTINCT {% endif %}
-                        {% for col in source.columns %}
-                            {{ get_source_transform(col) }} AS "{{ col.name }}"
-                            {%- if not loop.last -%}, {% endif %}
-                        {% endfor %}
-                        {{ source.join }}
-                        {% if desiredState.config.groupByAll %} GROUP BY ALL {% endif %}
+        {%if (currentState.node.name != desiredState.node.name) or (desiredState.node.location.name !=  currentState.node.location.name) or nsVariables.storageLocationTest == false%}
 
-                        {% if not loop.last %}
-                            {% if desiredState.config.insertStrategy in ['UNION', 'UNION ALL'] %}
-                                {{ desiredState.config.insertStrategy }}
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
+             {{ stage('Clone Interactive node') }}
+             CREATE OR REPLACE {{ keyword }} INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }} clone {{cfullyQualifiedTargetInteractiveTableName }}
 
-                {% else %}
+             {{ stage('Swap Interactive node') }}
+             ALTER INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }} SWAP WITH {{cfullyQualifiedTargetInteractiveTableName}}
 
-                    {# Create Dynamic Interactive Table #}
-                    {{ stage('Create '+ '{{ desiredState.node.materializationType }}', true, "sql", "create") }}
-                    CREATE OR REPLACE {{ keyword }} INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }}
-                            {{ nsVariables.finalClusterKey }}
-                            TARGET_LAG = '{{ interactiveTableLagSpecification }}'
-                            WAREHOUSE = {{ interactiveTableWarehouse }}
-                            {{ interactiveTableComment }}
-                    (
-                        {% for col in desiredState.columns %}
-                            "{{ col.name }}"{{ col.dataType }}
-                            {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
-                            {%- if not loop.last -%}, {% endif %}
-                        {% endfor %}
-                    )
-                    AS
-                    {% for source in desiredState.sources %}
-                        SELECT {% if desiredState.config.selectDistinct %} DISTINCT {% endif %}
-                        {% for col in source.columns %}
-                            {{ get_source_transform(col) }} AS "{{ col.name }}"
-                            {%- if not loop.last -%}, {% endif %}
-                        {% endfor %}
-                        {{ source.join }}
-                        {% if desiredState.config.groupByAll %} GROUP BY ALL {% endif %}
+             {{ stage('Drop '+ '{{currentState.node.materializationType}}') }}
+              DROP INTERACTIVE TABLE IF EXISTS {{cfullyQualifiedTargetInteractiveTableName}}
 
-                        {% if not loop.last %}
-                            {% if desiredState.config.insertStrategy in ['UNION', 'UNION ALL'] %}
-                                {{ desiredState.config.insertStrategy }}
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
+           {% else %}
+             {{ stage('Clone Interactive node') }}
+             CREATE OR REPLACE {{ keyword }} INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableNamenew }} clone {{fullyQualifiedTargetInteractiveTableName }}
 
-                {% endif %}   
-            {% endif %}
+             {{ stage('Swap Interactive node') }}
+             ALTER INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }} SWAP WITH {{fullyQualifiedTargetInteractiveTableNamenew }}
+
+             {{ stage('Drop '+ '{{currentState.node.materializationType}}') }}
+              DROP INTERACTIVE TABLE IF EXISTS {{fullyQualifiedTargetInteractiveTableNamenew}}
+
+           {% endif %}
            
              {# Change in column description #}
             
@@ -504,13 +460,35 @@ does not permit copying or modification for any other purpose.
             {% endfor %}
 
            
-          {% if clusterTest == false %}
-         
-                  {{ stage('Recluster TABLE') }}
-                ALTER TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
-                {{ nsVariables.finalClusterKey }}
+        {% if clusterTest == false %}
+            {{ stage('Create '+ '{{ desiredState.node.materializationType }}', true, "sql", "create") }}
+            CREATE OR REPLACE {{ keyword }} INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }}
+                {{ nsVariables.finalClusterKey }} 
+                {{ interactiveTableComment }}
+            (
+                {% for col in desiredState.columns %}
+                    "{{ col.name }}"{{ col.dataType }}
+                    {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
+                    {%- if not loop.last -%}, {% endif %}
+                {% endfor %}
+            )
+            AS
+            {% for source in desiredState.sources %}
+                SELECT {% if desiredState.config.selectDistinct %} DISTINCT {% endif %}
+                {% for col in source.columns %}
+                    {{ get_source_transform(col) }} AS "{{ col.name }}"
+                    {%- if not loop.last -%}, {% endif %}
+                {% endfor %}
+                {{ source.join }}
+                {% if desiredState.config.groupByAll %} GROUP BY ALL {% endif %}
 
-         {%endif%}
+                {% if not loop.last %}
+                    {% if desiredState.config.insertStrategy in ['UNION', 'UNION ALL'] %}
+                        {{ desiredState.config.insertStrategy }}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {%endif%}
          
              {% if  warehouseTest == false or lagSpecificationTest == false or autoRefreshOptionTest == false or nodeCommentTest == false %}
                 
@@ -538,70 +516,36 @@ does not permit copying or modification for any other purpose.
                 {{ stage('Drop ' + currentState.node.materializationType + ' ' + ref_no_link(currentState.node. location.name, currentState.node.name), true, "sql", "drop") }}
                 DROP INTERACTIVE TABLE IF EXISTS {{ ref_no_link(currentState.node.location.name, currentState.node.name) }}
 
-                {# Create Static Transient Interactive Table #}
-                {% if  desiredState.config.autoRefresh == false %} 
-                    {{ stage('Create '+ '{{ desiredState.node.materializationType }}', true, "sql", "create") }}
-                    CREATE OR REPLACE {{ keyword }} INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }}
-                        {{ nsVariables.finalClusterKey }} 
-                        {{ interactiveTableComment }}
-                    (
-                        {% for col in desiredState.columns %}
-                            "{{ col.name }}"{{ col.dataType }}
-                            {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
-                            {%- if not loop.last -%}, {% endif %}
-                        {% endfor %}
-                    )
-                    AS
-                    {% for source in desiredState.sources %}
-                        SELECT {% if desiredState.config.selectDistinct %} DISTINCT {% endif %}
-                        {% for col in source.columns %}
-                            {{ get_source_transform(col) }} AS "{{ col.name }}"
-                            {%- if not loop.last -%}, {% endif %}
-                        {% endfor %}
-                        {{ source.join }}
-                        {% if desiredState.config.groupByAll %} GROUP BY ALL {% endif %}
+                {{ stage('Create '+ '{{ desiredState.node.materializationType }}', true, "sql", "create") }}
+               CREATE OR REPLACE {{ keyword }} INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }}
+                TARGET_LAG = '{{ interactiveTableLagSpecification }}'
+                WAREHOUSE = {{interactiveTableWarehouse}}
+                REFRESH_MODE   = {{interactiveTablerefresh}}
+                INITIALIZE = {{interactiveTableinitialize}}
+            {{ interactiveTableComment }}
+           (
+            {% for col in desiredState.columns %}
+                "{{ col.name }}"{{ col.dataType }}
+                {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
+                {%- if not loop.last -%}, {% endif %}
+            {% endfor %}
+           )
+          AS
+            {% for source in desiredState.sources %}
+              SELECT {% if desiredState.config.selectDistinct %} DISTINCT {% endif %}
+               {% for col in source.columns %}
+                {{ get_source_transform(col) }} AS "{{ col.name }}"
+                {%- if not loop.last -%}, {% endif %}
+               {% endfor %}
 
-                        {% if not loop.last %}
-                            {% if desiredState.config.insertStrategy in ['UNION', 'UNION ALL'] %}
-                                {{ desiredState.config.insertStrategy }}
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-
-                {% else %}
-
-                    {# Create Dynamic Transient Interactive Table #}
-                    {{ stage('Create '+ '{{ desiredState.node.materializationType }}', true, "sql", "create") }}
-                    CREATE OR REPLACE {{ keyword }} INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }}
-                            {{ nsVariables.finalClusterKey }}
-                            TARGET_LAG = '{{ interactiveTableLagSpecification }}'
-                            WAREHOUSE = {{ interactiveTableWarehouse }}
-                            {{ interactiveTableComment }}
-                    (
-                        {% for col in desiredState.columns %}
-                            "{{ col.name }}"{{ col.dataType }}
-                            {%- if col.description | length > 0 %} COMMENT '{{ col.description | escape }}'{% endif %}
-                            {%- if not loop.last -%}, {% endif %}
-                        {% endfor %}
-                    )
-                    AS
-                    {% for source in desiredState.sources %}
-                        SELECT {% if desiredState.config.selectDistinct %} DISTINCT {% endif %}
-                        {% for col in source.columns %}
-                            {{ get_source_transform(col) }} AS "{{ col.name }}"
-                            {%- if not loop.last -%}, {% endif %}
-                        {% endfor %}
-                        {{ source.join }}
-                        {% if desiredState.config.groupByAll %} GROUP BY ALL {% endif %}
-
-                        {% if not loop.last %}
-                            {% if desiredState.config.insertStrategy in ['UNION', 'UNION ALL'] %}
-                                {{ desiredState.config.insertStrategy }}
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-
+              {{ source.join }}
+               {% if desiredState.config.groupByAll %} GROUP BY ALL {% endif %}
+              {% if not loop.last %}
+                {% if desiredState.config.insertStrategy in ['UNION', 'UNION ALL'] %}
+                    {{ desiredState.config.insertStrategy }}
                 {% endif %}
+              {% endif %}
+            {% endfor %}
 
             {% if desiredState.config.clusterKey == true %}
                   {{ stage('Apply Table Clustering', true, "sql", "create") }}

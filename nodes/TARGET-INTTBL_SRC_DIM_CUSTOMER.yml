@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 40ed72f7-74c4-4a0e-9534-02bfbc04196a
-name: INTTBL_SRC_DIM_CUSTOMER1
+name: INTTBL_SRC_DIM_CUSTOMER
 operation:
   config:
     autoRefresh: false
@@ -12,6 +12,9 @@ operation:
             stepCounter: 40ed72f7-74c4-4a0e-9534-02bfbc04196a
         - columnName:
             columnCounter: 8094d488-ce25-44b1-999e-7ea7164ff6a6
+            stepCounter: 40ed72f7-74c4-4a0e-9534-02bfbc04196a
+        - columnName:
+            columnCounter: 6d1876d9-1c92-40a0-9ba2-a712843799e2
             stepCounter: 40ed72f7-74c4-4a0e-9534-02bfbc04196a
     clusterKeyConfigExpressions:
       items:
@@ -26,7 +29,7 @@ operation:
         - lagPeriod: Minutes
           lagValue: "60"
     refresh_mode: AUTO
-    selectDistinct: false
+    selectDistinct: true
     warehouseName: COMPUTE_WH
   database: ""
   deployEnabled: true
@@ -189,9 +192,9 @@ operation:
             nodeName: SRC_DIM_CUSTOMER
         join:
           joinCondition: FROM {{ ref('SRC', 'SRC_DIM_CUSTOMER') }} "SRC_DIM_CUSTOMER"
-        name: INTTBL_SRC_DIM_CUSTOMER1
+        name: INTTBL_SRC_DIM_CUSTOMER
         noLinkRefs: []
-  name: INTTBL_SRC_DIM_CUSTOMER1
+  name: INTTBL_SRC_DIM_CUSTOMER
   overrideSQL: false
   schema: ""
   sqlType: "602"
