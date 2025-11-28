@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 40ed72f7-74c4-4a0e-9534-02bfbc04196a
-name: INTTBL_SRC_DIM_CUSTOMER
+name: INTTBL_SRC_DIM_CUSTOMER1
 operation:
   config:
     autoRefresh: false
@@ -30,7 +30,7 @@ operation:
     warehouseName: COMPUTE_WH
   database: ""
   deployEnabled: true
-  description: Interactive Table demo
+  description: Interactive Table demo1
   isMultisource: false
   locationName: TARGET
   materializationType: interactive table
@@ -189,9 +189,9 @@ operation:
             nodeName: SRC_DIM_CUSTOMER
         join:
           joinCondition: FROM {{ ref('SRC', 'SRC_DIM_CUSTOMER') }} "SRC_DIM_CUSTOMER"
-        name: INTTBL_SRC_DIM_CUSTOMER
+        name: INTTBL_SRC_DIM_CUSTOMER1
         noLinkRefs: []
-  name: INTTBL_SRC_DIM_CUSTOMER
+  name: INTTBL_SRC_DIM_CUSTOMER1
   overrideSQL: false
   schema: ""
   sqlType: "602"
