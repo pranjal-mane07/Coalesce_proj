@@ -10,6 +10,9 @@ operation:
         - columnName:
             columnCounter: ef471e2c-8fdf-4d66-8470-84c2d9292a6d
             stepCounter: 40ed72f7-74c4-4a0e-9534-02bfbc04196a
+        - columnName:
+            columnCounter: 8094d488-ce25-44b1-999e-7ea7164ff6a6
+            stepCounter: 40ed72f7-74c4-4a0e-9534-02bfbc04196a
     clusterKeyConfigExpressions:
       items:
         - columnNameExpressions: null
