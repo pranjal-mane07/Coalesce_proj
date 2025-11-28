@@ -3,7 +3,7 @@ id: 40ed72f7-74c4-4a0e-9534-02bfbc04196a
 name: INTTBL_SRC_DIM_CUSTOMER
 operation:
   config:
-    autoRefresh: true
+    autoRefresh: false
     clusterKey: true
     clusterKeyConfig:
       items:
@@ -14,7 +14,7 @@ operation:
       items:
         - columnNameExpressions: null
           sqlExpression: ex. trunc(<column_name>, -5)
-    clusterKeyExpressions: true
+    clusterKeyExpressions: false
     groupByAll: false
     initialize: ON_CREATE
     insertStrategy: UNION ALL
