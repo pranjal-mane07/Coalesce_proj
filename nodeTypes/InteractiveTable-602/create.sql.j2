@@ -461,7 +461,7 @@ does not permit copying or modification for any other purpose.
 
            
         {% if clusterTest == false %}
-            {{ stage('Create '+ '{{ desiredState.node.materializationType }}', true, "sql", "create") }}
+            {{ stage('Re-Create '+ '{{ desiredState.node.materializationType }}' + 'with additional Cluster Keys', true, "sql", "create") }}
             CREATE OR REPLACE {{ keyword }} INTERACTIVE TABLE {{ fullyQualifiedTargetInteractiveTableName }}
                 {{ nsVariables.finalClusterKey }} 
                 {{ interactiveTableComment }}
