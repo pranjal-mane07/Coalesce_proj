@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 907346b6-8f29-4517-989e-4f900de88413
-name: INTTBL_SRC_DIM_CUSTOMER
+id: d5b99edd-fa52-48ff-9bd8-19a48059c99c
+name: INTTBL_SRC_DIM_CUSTOMER_01
 operation:
   config:
     autoRefresh: false
@@ -8,8 +8,8 @@ operation:
     clusterKeyConfig:
       items:
         - columnName:
-            columnCounter: 77679412-6686-4351-a29c-ab1e4729f581
-            stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+            columnCounter: fa500a6b-1d2b-4cd4-8450-db5d971bed3a
+            stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
     clusterKeyConfigExpressions:
       items:
         - {}
@@ -26,15 +26,15 @@ operation:
   deployEnabled: true
   description: ""
   isMultisource: false
-  locationName: TARGET
+  locationName: TEST
   materializationType: interactive table
   metadata:
     appliedNodeTests: []
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 77679412-6686-4351-a29c-ab1e4729f581
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+          columnCounter: fa500a6b-1d2b-4cd4-8450-db5d971bed3a
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -47,8 +47,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 1232f05a-547e-456d-9632-3982f378a785
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+          columnCounter: 951e268c-7bb2-4601-aadc-7c8c9d210acd
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -61,12 +61,12 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: f3719cb3-50e2-4191-a9eb-d8cfb0f30bab
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+          columnCounter: 1b64da94-74df-48db-88ee-644755838980
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
-        name: CUSTOMER_MAILID
+        name: CUSTOMER_EMAIL
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -75,8 +75,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 50a56cc7-23ad-4f65-b1f8-7614233f794e
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+          columnCounter: a7631334-67f7-4d88-9079-1db40ed1559b
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -89,8 +89,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3c5b0104-5e2c-4669-81d9-2b5390d8f838
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+          columnCounter: 67e3c44a-d345-4052-b293-1c8b6e360579
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
@@ -103,8 +103,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: d03bebc4-9471-4adc-af61-fbabeba2edfd
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+          columnCounter: 3ee6220b-f02f-4474-8e3e-cf48567cc505
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -117,8 +117,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 72d369dd-862f-402a-888a-c8bcec219515
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+          columnCounter: a5d62181-48d4-4f6b-ae8e-8a634c69c17d
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
@@ -131,8 +131,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: ce237293-fac5-47f4-8617-3363ea698d1b
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+          columnCounter: 3f019855-9394-42cf-a142-1b6a6159a951
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: DATE
         description: ""
@@ -145,8 +145,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 6ef50764-83e2-45ed-9c9a-8f4710ad8240
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
+          columnCounter: 451e8c5e-90be-46e4-a2fc-063fd2b0b223
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: TIME(9)
         description: ""
@@ -155,20 +155,6 @@ operation:
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 4b9cde77-036b-4d97-bf39-523a1b7e620d
-                stepCounter: 5b5df444-5ff3-4dab-a1ce-1f86fe1caff9
-            transform: ""
-      - appliedColumnTests: {}
-        columnReference:
-          columnCounter: ebb554cf-5c0e-483f-ba89-0ddc3ebf26fa
-          stepCounter: 907346b6-8f29-4517-989e-4f900de88413
-        config: {}
-        dataType: BOOLEAN
-        description: ""
-        name: ACTIVE_FLAG
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: bd4ff23a-c7a1-4608-97bd-2cc8c6510dc6
                 stepCounter: 5b5df444-5ff3-4dab-a1ce-1f86fe1caff9
             transform: ""
     cteString: ""
@@ -183,9 +169,9 @@ operation:
             nodeName: SRC_DIM_CUSTOMER
         join:
           joinCondition: FROM {{ ref('SRC', 'SRC_DIM_CUSTOMER') }} "SRC_DIM_CUSTOMER"
-        name: INTTBL_SRC_DIM_CUSTOMER
+        name: INTTBL_SRC_DIM_CUSTOMER_01
         noLinkRefs: []
-  name: INTTBL_SRC_DIM_CUSTOMER
+  name: INTTBL_SRC_DIM_CUSTOMER_01
   overrideSQL: false
   schema: ""
   sqlType: "602"
