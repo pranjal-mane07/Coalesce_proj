@@ -3,18 +3,12 @@ id: d5b99edd-fa52-48ff-9bd8-19a48059c99c
 name: INTTBL_SRC_DIM_CUSTOMER_01
 operation:
   config:
-    autoRefresh: false
+    autoRefresh: true
     clusterKey: true
     clusterKeyConfig:
       items:
         - columnName:
-            columnCounter: fa500a6b-1d2b-4cd4-8450-db5d971bed3a
-            stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
-        - columnName:
             columnCounter: 951e268c-7bb2-4601-aadc-7c8c9d210acd
-            stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
-        - columnName:
-            columnCounter: 3f019855-9394-42cf-a142-1b6a6159a951
             stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
     clusterKeyConfigExpressions:
       items:
@@ -24,10 +18,11 @@ operation:
     insertStrategy: UNION ALL
     lagSpecification:
       items:
-        - {}
+        - lagPeriod: Minutes
+          lagValue: "60"
     selectDistinct: false
     testsEnabled: false
-    warehouseName: dev_wh_xs
+    warehouseName: COMPUTE_WH
   database: ""
   deployEnabled: true
   description: Interactive table test
