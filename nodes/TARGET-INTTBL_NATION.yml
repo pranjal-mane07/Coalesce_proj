@@ -24,7 +24,7 @@ operation:
     refresh_mode: AUTO
     selectDistinct: false
     testsEnabled: false
-    warehouseName: dev_wh_xs
+    warehouseName: COMPUTE_WH
   database: ""
   deployEnabled: true
   description: ""
