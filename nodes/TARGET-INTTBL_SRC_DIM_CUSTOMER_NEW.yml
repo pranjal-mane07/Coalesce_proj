@@ -3,7 +3,7 @@ id: 907346b6-8f29-4517-989e-4f900de88413
 name: INTTBL_SRC_DIM_CUSTOMER_NEW
 operation:
   config:
-    autoRefresh: false
+    autoRefresh: true
     clusterKey: true
     clusterKeyConfig:
       items:
@@ -18,10 +18,11 @@ operation:
     insertStrategy: UNION ALL
     lagSpecification:
       items:
-        - {}
+        - lagPeriod: Minutes
+          lagValue: "30"
     selectDistinct: false
     testsEnabled: false
-    warehouseName: dev_wh_xs
+    warehouseName: COMPUTE_WH
   database: ""
   deployEnabled: true
   description: ""
