@@ -3,7 +3,7 @@ id: d5b99edd-fa52-48ff-9bd8-19a48059c99c
 name: INTTBL_SRC_DIM_CUSTOMER_01
 operation:
   config:
-    autoRefresh: true
+    autoRefresh: false
     clusterKey: true
     clusterKeyConfig:
       items:
@@ -22,7 +22,7 @@ operation:
           lagValue: "60"
     selectDistinct: false
     testsEnabled: false
-    warehouseName: COMPUTE_WH
+    warehouseName: INTERACTIVE_DEMO
   database: ""
   deployEnabled: true
   description: Interactive table test

@@ -19,10 +19,10 @@ operation:
     lagSpecification:
       items:
         - lagPeriod: Minutes
-          lagValue: "30"
+          lagValue: "60"
     selectDistinct: false
     testsEnabled: false
-    warehouseName: COMPUTE_WH
+    warehouseName: INTERACTIVE_WH
   database: ""
   deployEnabled: true
   description: ""
