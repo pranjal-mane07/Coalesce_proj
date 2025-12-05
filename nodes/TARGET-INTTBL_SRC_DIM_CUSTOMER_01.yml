@@ -1,6 +1,6 @@
 fileVersion: 1
 id: af57aae4-39a1-4e84-b53c-3a1a92b987c9
-name: INTTBL_SRC_DIM_CUSTOMER
+name: INTTBL_SRC_DIM_CUSTOMER_01
 operation:
   config:
     autoRefresh: true
@@ -19,7 +19,7 @@ operation:
     lagSpecification:
       items:
         - lagPeriod: Minutes
-          lagValue: "60"
+          lagValue: "30"
     selectDistinct: false
     testsEnabled: false
     warehouseName: COMPUTE_WH
@@ -67,7 +67,7 @@ operation:
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
-        name: CUSTOMER_EMAIL
+        name: CUSTOMER_MAILID
         nullable: true
         sourceColumnReferences:
           - columnReferences:
@@ -184,9 +184,9 @@ operation:
             nodeName: SRC_DIM_CUSTOMER
         join:
           joinCondition: FROM {{ ref('SRC', 'SRC_DIM_CUSTOMER') }} "SRC_DIM_CUSTOMER"
-        name: INTTBL_SRC_DIM_CUSTOMER
+        name: INTTBL_SRC_DIM_CUSTOMER_01
         noLinkRefs: []
-  name: INTTBL_SRC_DIM_CUSTOMER
+  name: INTTBL_SRC_DIM_CUSTOMER_01
   overrideSQL: false
   schema: ""
   sqlType: "602"
