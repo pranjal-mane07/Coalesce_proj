@@ -1,40 +1,40 @@
 fileVersion: 1
-id: 9fab26d9-2135-418b-8f94-52ef98016a42
-name: DT_WRK_SRC_DIM_CUSTOMER
+id: d5b99edd-fa52-48ff-9bd8-19a48059c99c
+name: INTTBL_SRC_DIM_CUSTOMER_01
 operation:
   config:
-    clusterKey: false
+    autoRefresh: false
+    clusterKey: true
     clusterKeyConfig:
       items:
-        - {}
+        - columnName:
+            columnCounter: fa500a6b-1d2b-4cd4-8450-db5d971bed3a
+            stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
     clusterKeyConfigExpressions:
       items:
         - {}
     clusterKeyExpressions: false
-    cpygrants: false
-    downstreamOption: false
     groupByAll: false
-    initialize: ON_CREATE
     insertStrategy: UNION ALL
     lagSpecification:
       items:
         - {}
-    refresh_mode: AUTO
     selectDistinct: false
+    testsEnabled: false
     warehouseName: dev_wh_xs
   database: ""
   deployEnabled: true
   description: ""
   isMultisource: false
   locationName: TARGET
-  materializationType: dynamic table
+  materializationType: interactive table
   metadata:
     appliedNodeTests: []
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 0bbcd0bf-94f9-4041-ac8a-b76680504a1a
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: fa500a6b-1d2b-4cd4-8450-db5d971bed3a
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -47,8 +47,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3f846dff-55c7-4dcc-b181-dc77a875e46a
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: 951e268c-7bb2-4601-aadc-7c8c9d210acd
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -61,8 +61,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 4b08e491-fa59-4626-98f2-31c830b93c4f
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: 1b64da94-74df-48db-88ee-644755838980
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -75,8 +75,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 266c1098-6558-4462-85ba-bbd5d33a31b1
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: a7631334-67f7-4d88-9079-1db40ed1559b
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: VARCHAR(16777216)
         description: ""
@@ -89,8 +89,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 61ef6998-6279-4fa1-9c44-9cf625fc872b
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: 67e3c44a-d345-4052-b293-1c8b6e360579
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
@@ -103,8 +103,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c3dd4ead-25c8-4fd4-a2c7-4ff7911b5977
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: 3ee6220b-f02f-4474-8e3e-cf48567cc505
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: NUMBER(38,0)
         description: ""
@@ -117,8 +117,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: a08d66e6-7abb-4094-9fef-c4da4644aaf1
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: a5d62181-48d4-4f6b-ae8e-8a634c69c17d
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: TIMESTAMP_NTZ(9)
         description: ""
@@ -131,8 +131,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: efd2f80d-7531-4278-a278-523f57627228
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: 3f019855-9394-42cf-a142-1b6a6159a951
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: DATE
         description: ""
@@ -145,8 +145,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 209e0c78-207c-4472-adf0-81c5fe881372
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: 451e8c5e-90be-46e4-a2fc-063fd2b0b223
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: TIME(9)
         description: ""
@@ -159,8 +159,8 @@ operation:
             transform: ""
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: d0c6d0e1-8177-46ee-8da8-5aadb9fe8772
-          stepCounter: 9fab26d9-2135-418b-8f94-52ef98016a42
+          columnCounter: a0d3aa79-8bdc-4561-95d8-f69bcb08ada3
+          stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: BOOLEAN
         description: ""
@@ -183,12 +183,12 @@ operation:
             nodeName: SRC_DIM_CUSTOMER
         join:
           joinCondition: FROM {{ ref('SRC', 'SRC_DIM_CUSTOMER') }} "SRC_DIM_CUSTOMER"
-        name: DT_WRK_SRC_DIM_CUSTOMER
+        name: INTTBL_SRC_DIM_CUSTOMER_01
         noLinkRefs: []
-  name: DT_WRK_SRC_DIM_CUSTOMER
+  name: INTTBL_SRC_DIM_CUSTOMER_01
   overrideSQL: false
   schema: ""
-  sqlType: "604"
+  sqlType: "602"
   type: sql
   version: 1
 type: Node
