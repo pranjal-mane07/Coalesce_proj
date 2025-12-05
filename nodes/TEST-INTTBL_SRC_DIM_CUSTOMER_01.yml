@@ -24,7 +24,7 @@ operation:
     warehouseName: dev_wh_xs
   database: ""
   deployEnabled: true
-  description: ""
+  description: ABC
   isMultisource: false
   locationName: TEST
   materializationType: interactive table
@@ -37,7 +37,7 @@ operation:
           stepCounter: d5b99edd-fa52-48ff-9bd8-19a48059c99c
         config: {}
         dataType: NUMBER(38,0)
-        description: ""
+        description: ABC
         name: CUSTOMER_ID
         nullable: false
         sourceColumnReferences:

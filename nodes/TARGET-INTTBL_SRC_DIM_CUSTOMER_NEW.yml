@@ -53,12 +53,12 @@ operation:
         dataType: VARCHAR(16777216)
         description: ""
         name: CUSTOMER_NAME
-        nullable: true
+        nullable: false
         sourceColumnReferences:
           - columnReferences:
               - columnCounter: 39568ad6-8c37-461c-87c9-06cd53fa8f2d
                 stepCounter: 5b5df444-5ff3-4dab-a1ce-1f86fe1caff9
-            transform: ""
+            transform: UPPER("SRC_DIM_CUSTOMER"."CUSTOMER_NAME")
       - appliedColumnTests: {}
         columnReference:
           columnCounter: f3719cb3-50e2-4191-a9eb-d8cfb0f30bab
