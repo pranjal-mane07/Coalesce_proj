@@ -8,7 +8,7 @@ mappingDefinitions:
     database: PRANJAL
     schema: PRANJAL_TEST
   TEST:
-    database: ""
-    schema: ""
+    database: PRANJAL
+    schema: TARGET_DB
 name: Deployment
 type: Environment
