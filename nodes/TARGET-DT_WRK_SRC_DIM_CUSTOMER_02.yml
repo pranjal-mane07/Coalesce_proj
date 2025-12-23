@@ -32,7 +32,7 @@ operation:
     timeTravel: true
     timeTravelreference: STATEMENT
     timeTraveltype: AT
-    timeTravelvalue: "'01c13d8f-0307-55fa-0000-001a8bfbdaed'"
+    timeTravelvalue: "'01c13d93-0307-50b8-0000-001a8bfb2ed9'"
     warehouseName: COMPUTE_WH
   database: ""
   deployEnabled: true
