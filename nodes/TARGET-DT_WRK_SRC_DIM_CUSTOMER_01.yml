@@ -30,9 +30,9 @@ operation:
     refresh_mode: AUTO
     selectDistinct: false
     timeTravel: true
-    timeTravelreference: STATEMENT
+    timeTravelreference: OFFSET
     timeTraveltype: AT
-    timeTravelvalue: "'01c13d5a-0307-4f75-001a-8bfb00012cb2'"
+    timeTravelvalue: "-60"
     warehouseName: COMPUTE_WH
   database: ""
   deployEnabled: true
