@@ -267,5 +267,5 @@ metadata:
       
           isRequired: false
           enableIf: "{% if (config.clusterKey and config.clusterKeyExpressions)  %} true {% else %} false {% endif %}"
-name: Dynamic Table Work_01
+name: Dynamic Table Work
 type: NodeType
