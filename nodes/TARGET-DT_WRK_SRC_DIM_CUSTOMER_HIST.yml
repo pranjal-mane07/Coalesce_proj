@@ -5,7 +5,7 @@ operation:
   config:
     advanceWarehouse: false
     backfill: true
-    backfillSource: STG_SRC_DIM_CUSTOMER_HIST
+    backfillSource: STG_SRC_DIM_CUSTOMER_HISTORICAL
     clusterKey: false
     clusterKeyConfig:
       items:
@@ -32,7 +32,7 @@ operation:
     timeTravel: true
     timeTravelreference: STATEMENT
     timeTraveltype: AT
-    timeTravelvalue: "'01c13d06-0307-4f75-001a-8bfb00012b72'"
+    timeTravelvalue: "'01c13c82-0307-5638-001a-8bfb00010392'"
     warehouseName: COMPUTE_WH
   database: ""
   deployEnabled: true
