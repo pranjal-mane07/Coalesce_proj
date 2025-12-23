@@ -32,7 +32,7 @@ operation:
     timeTravel: true
     timeTravelreference: OFFSET
     timeTraveltype: AT
-    timeTravelvalue: "-60"
+    timeTravelvalue: "-120"
     warehouseName: COMPUTE_WH
   database: ""
   deployEnabled: true
